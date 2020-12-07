@@ -47,12 +47,23 @@ export default new Vuex.Store({
         if (state.carrito.some((i) => i.id == anuncio.id)) {
           let index = state.carrito.map((i) => i.id).indexOf(anuncio.id);
           state.carrito[index].cantidad = state.carrito[index].cantidad + 1;
+          state.carrito[index].subTotal = parseFloat(
+            Math.round(
+              state.carrito[index].cantidad * state.carrito[index].precio * 100
+            ) / 100
+          ).toFixed(2);
         } else {
           anuncio.cantidad = 1;
+          anuncio.subTotal = parseFloat(
+            Math.round(anuncio.cantidad * anuncio.precio * 100) / 100
+          ).toFixed(2);
           state.carrito.push(anuncio);
         }
       } else {
         anuncio.cantidad = 1;
+        anuncio.subTotal = parseFloat(
+          Math.round(anuncio.cantidad * anuncio.precio * 100) / 100
+        ).toFixed(2);
         state.carrito.push(anuncio);
       }
       this.commit("cantidadDeArticulos");
@@ -64,6 +75,37 @@ export default new Vuex.Store({
       anuncioLocal.id = anuncio.id;
       console.log(anuncio.id);
       this.commit("agregarAlCarrito1", anuncioLocal);
+      this.commit("cantidadDeArticulos");
+    },
+    agregarCantidad(state, id) {
+      var carritoLocal = state.carrito;
+      carritoLocal.forEach((articulo) => {
+        if (articulo.id == id) {
+          articulo.cantidad = articulo.cantidad + 1;
+          articulo.subTotal = parseFloat(
+            Math.round(articulo.cantidad * articulo.precio * 100) / 100
+          ).toFixed(2);
+        }
+      });
+      state.carrito = carritoLocal.slice();
+      this.commit("cantidadDeArticulos");
+    },
+    quitarCantidad(state, id) {
+      var carritoLocal = state.carrito;
+      carritoLocal.forEach((articulo) => {
+        if (articulo.id == id) {
+          articulo.cantidad = articulo.cantidad - 1;
+          articulo.subTotal = parseFloat(
+            Math.round(articulo.cantidad * articulo.precio * 100) / 100
+          ).toFixed(2);
+        }
+      });
+      state.carrito = carritoLocal.slice();
+      console.log(state.carrito);
+      this.commit("cantidadDeArticulos");
+    },
+    quitarArticulo(state, index) {
+      state.carrito.splice(index, 1);
       this.commit("cantidadDeArticulos");
     },
     cantidadDeArticulos(state) {
