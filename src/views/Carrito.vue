@@ -26,7 +26,7 @@
               :to="{ name: 'Anuncio', params: { id: articulo.id } }"
               class="text-decoration-none black--text"
             >
-              <v-row class="mr-auto">{{
+              <v-row class="mr-auto ">{{
                 articulo.titulo.substring(0, 49).concat("...")
               }}</v-row>
             </router-link>
@@ -48,7 +48,7 @@
         </v-row>
         <v-row>
           <v-col cols="6" class="d-flex flex-column">
-            <v-row><span class="mx-auto">Cantidad</span></v-row>
+            <v-row><span class="mx-auto font-weight-bold">Cantidad</span></v-row>
             <v-row>
               <v-btn-toggle class="mx-auto">
                 <v-btn
@@ -74,7 +74,7 @@
             </v-row>
           </v-col>
           <v-col cols="6" class="d-flex flex-column">
-            <v-row><span class="mx-auto">Subtotal</span></v-row>
+            <v-row><span class="mx-auto font-weight-bold">Subtotal</span></v-row>
             <v-row class="text-h5">
               <span class="mx-auto">$ {{ articulo.subTotal }} </span>
             </v-row>
@@ -123,7 +123,7 @@
             </v-row>
             <v-row>
               <v-col cols="6" class="d-flex flex-column">
-                <v-row><span class="mx-auto">Cantidad</span></v-row>
+                <v-row><span class="mx-auto font-weight-bold">Cantidad</span></v-row>
                 <v-row>
                   <v-btn-toggle class="mx-auto">
                     <v-btn
@@ -149,7 +149,7 @@
                 </v-row>
               </v-col>
               <v-col cols="6" class="d-flex flex-column">
-                <v-row><span class="mx-auto">Subtotal</span></v-row>
+                <v-row><span class="mx-auto font-weight-bold">Subtotal</span></v-row>
                 <v-row class="text-h5">
                   <span class="mx-auto">$ {{ articulo.subTotal }} </span>
                 </v-row>
