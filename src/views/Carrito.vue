@@ -11,13 +11,15 @@
           <v-col cols="4" sm="3">
             <v-img
               :src="articulo.imagen"
-              :height="$vuetify.breakpoint.smOnly ?'150':'100'"
-              :width="$vuetify.breakpoint.smOnly ?'150':'100'"
+              :height="$vuetify.breakpoint.smOnly ? '150' : '100'"
+              :width="$vuetify.breakpoint.smOnly ? '150' : '100'"
               class=" mx-auto my-auto rounded"
             ></v-img>
           </v-col>
           <v-col cols="8" sm="9">
-            <v-row class="mr-auto">{{ articulo.titulo.substring(0, 49).concat("...") }}</v-row>
+            <v-row class="mr-auto">{{
+              articulo.titulo.substring(0, 49).concat("...")
+            }}</v-row>
             <v-row>${{ articulo.precio }}</v-row>
             <v-row>
               <v-col cols="6" class="d-flex flex-column">

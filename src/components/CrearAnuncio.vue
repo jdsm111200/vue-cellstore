@@ -457,13 +457,13 @@ export default {
               console.log("Imagen" + imagen.name + " subida");
               if (contador == cantidadImg) {
                 this.dialogLoading = false;
+                this.snackbar = true;
               }
             })
             .catch((e) => {
               console.log(e);
             });
         });
-        this.snackbar = true;
         this.cancelar();
       } else if (this.imagenes.length == 0) {
         this.imagenesValid = true;
@@ -479,5 +479,3 @@ export default {
   },
 };
 </script>
-
-

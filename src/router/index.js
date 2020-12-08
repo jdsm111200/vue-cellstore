@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Anuncio from "../views/Anuncio.vue";
 import Carrito from "../views/Carrito.vue";
+import Estadisticas from "../views/Estadisticas.vue";
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,11 @@ const routes = [
     path: "/carrito",
     name: "Carrito",
     component: Carrito,
+  },
+  {
+    path: "/estadisticas",
+    name: "Estadisticas",
+    component: Estadisticas,
   },
 ];
 
