@@ -289,7 +289,7 @@ import { db } from "../main.js";
 import { st } from "../main.js";
 import VuePhoneNumberInput from "vue-phone-number-input";
 import "vue-phone-number-input/dist/vue-phone-number-input.css";
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "CrearAnuncio",
@@ -366,6 +366,7 @@ export default {
     };
   },
   methods: {
+    ...mapMutations(["nuevoAnuncio"]),
     obtenerVersionesOP() {
       if (this.anuncio.sistema != null) {
         this.anuncio.version = null;
@@ -458,6 +459,7 @@ export default {
               if (contador == cantidadImg) {
                 this.dialogLoading = false;
                 this.snackbar = true;
+                this.nuevoAnuncio();
               }
             })
             .catch((e) => {

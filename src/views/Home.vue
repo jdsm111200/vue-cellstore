@@ -50,7 +50,7 @@ export default {
     };
   },
   methods: {
-    async obtenerAcuncios() {
+    async obtenerAnuncios() {
       var anunciosLocal = [];
       await db
         .collection("anuncios")
@@ -96,7 +96,7 @@ export default {
     },
   },
   created() {
-    this.obtenerAcuncios();
+    this.obtenerAnuncios();
   },
   computed: {
     ...mapState([
@@ -111,6 +111,7 @@ export default {
       "storeRom",
       "storePrecioMin",
       "storePrecioMax",
+      "nuevo",
     ]),
     filtro() {
       var arrayFiltrado = [];
@@ -240,6 +241,12 @@ export default {
         console.log("no hay filtro seleccionado");
         return this.anuncios;
       }
+    },
+  },
+  watch: {
+    nuevo: function(val) {
+      console.log(val);
+      this.obtenerAnuncios();
     },
   },
 };

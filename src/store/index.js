@@ -14,6 +14,7 @@ export default new Vuex.Store({
     ram: [1, 2, 3, 4, 6, 8],
     rom: [16, 32, 64, 128, 256, 512],
     busqueda: "",
+    nuevo: false,
     carrito: [],
     cantidad: 0,
     path: null,
@@ -26,6 +27,9 @@ export default new Vuex.Store({
     storePrecioMax: null,
   },
   mutations: {
+    nuevoAnuncio(state) {
+      state.nuevo = !state.nuevo;
+    },
     setBusqueda(state, busqueda) {
       state.busqueda = busqueda.data;
       console.log(busqueda.path);
