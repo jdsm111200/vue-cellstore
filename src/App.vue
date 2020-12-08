@@ -30,7 +30,7 @@
         :ripple="false"
         icon
         @click="setBusqueda({ data: search, path: $route.path })"
-        ><i class="fas fa-search"></i
+        ><i class="fas fa-search fa-2x"></i
       ></v-btn>
       <v-btn-toggle title group>
         <v-btn :ripple="false" to="/" class="d-none d-md-flex">Inicio</v-btn>

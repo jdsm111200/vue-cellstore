@@ -5,18 +5,74 @@
       <v-card
         v-for="(articulo, index) in carrito"
         :key="articulo.id + '-m'"
-        class="my-2 d-md-none"
+        class="my-2  d-sm-none"
       >
         <v-row>
-          <v-col cols="4" sm="3">
+          <v-col cols="5">
             <v-img
               :src="articulo.imagen"
-              :height="$vuetify.breakpoint.smOnly ? '150' : '100'"
-              :width="$vuetify.breakpoint.smOnly ? '150' : '100'"
+              height="120"
+              width="120"
               class=" mx-auto my-auto rounded"
             ></v-img>
           </v-col>
-          <v-col cols="8" sm="9">
+          <v-col cols="7">
+            <v-row class="mr-auto">{{
+              articulo.titulo.substring(0, 49).concat("...")
+            }}</v-row>
+            <v-row>${{ articulo.precio }}</v-row>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="6" class="d-flex flex-column">
+            <v-row><span class="mx-auto">Cantidad</span></v-row>
+            <v-row>
+              <v-btn-toggle class="mx-auto">
+                <v-btn
+                  :class="{ red: articulo.cantidad == 1 }"
+                  :dark="articulo.cantidad == 1"
+                  @click="quitar(articulo.id, index)"
+                >
+                  <i
+                    :class="
+                      articulo.cantidad > 1
+                        ? 'fas fa-minus'
+                        : 'fas fa-trash-alt fa-2x'
+                    "
+                  ></i>
+                </v-btn>
+                <v-avatar tile style=" border: 1px solid #E0E0E0;">{{
+                  articulo.cantidad
+                }}</v-avatar>
+                <v-btn @click="agregarCantidad(articulo.id)">
+                  <i class="fas fa-plus"></i>
+                </v-btn>
+              </v-btn-toggle>
+            </v-row>
+          </v-col>
+          <v-col cols="6" class="d-flex flex-column">
+            <v-row><span class="mx-auto">Subtotal</span></v-row>
+            <v-row class="text-h5">
+              <span class="mx-auto">$ {{ articulo.subTotal }} </span>
+            </v-row>
+          </v-col>
+        </v-row>
+      </v-card>
+      <v-card
+        v-for="(articulo, index) in carrito"
+        :key="articulo.id + '-t'"
+        class="my-2  d-none d-sm-flex d-md-none"
+      >
+        <v-row>
+          <v-col sm="4">
+            <v-img
+              :src="articulo.imagen"
+              height="150"
+              width="150"
+              class=" mx-auto my-auto rounded"
+            ></v-img>
+          </v-col>
+          <v-col sm="8">
             <v-row class="mr-auto">{{
               articulo.titulo.substring(0, 49).concat("...")
             }}</v-row>
