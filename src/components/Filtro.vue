@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-expansion-panels>
+    <v-expansion-panels >
       <v-expansion-panel>
         <v-expansion-panel-header
           :expand-icon="iconoEstado"

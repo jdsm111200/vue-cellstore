@@ -3,7 +3,9 @@
     <v-container fluid>
       <v-row>
         <v-col md="3" class="d-none d-md-block">
-          <p class="ml-4">Filtros</p>
+          <v-card class="mb-4">
+            <v-card-title class="justify-center text-h5">Filtros</v-card-title>
+          </v-card>
           <Filtro v-if="$vuetify.breakpoint.mdAndUp"></Filtro>
         </v-col>
         <v-col>
@@ -246,6 +248,7 @@ export default {
   watch: {
     nuevo: function(val) {
       console.log(val);
+      this.loadingData = true;
       this.obtenerAnuncios();
     },
   },
