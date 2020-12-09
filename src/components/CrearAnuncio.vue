@@ -321,7 +321,7 @@ export default {
       traducciones: {
         countrySelectorLabel: "Codigo de Pais",
         countrySelectorError: "Elige un Pais",
-        phoneNumberLabel: "Numero de telefono",
+        phoneNumberLabel: "Telefono",
         example: "Ejemplo :",
       },
       imagenes: [],

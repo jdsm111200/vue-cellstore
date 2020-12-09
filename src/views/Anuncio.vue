@@ -192,6 +192,11 @@ export default {
                 console.log(e);
               });
           });
+          if (img.items.length == 0) {
+            this.imagenes.push(
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png"
+            );
+          }
         })
         .catch((eUrl) => {
           console.log(eUrl);

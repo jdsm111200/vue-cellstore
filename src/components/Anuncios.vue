@@ -144,6 +144,7 @@
                           ? anuncio.titulo
                           : anuncio.titulo.substring(0, 49).concat("...")
                       }}
+                      {{ anuncio.fecha }}
                     </v-card-title>
                   </router-link>
                   <v-card-text>
@@ -154,7 +155,7 @@
                         dense
                         half-increments
                         readonly
-                        size="14"
+                        size="10"
                       ></v-rating>
                       <div class="grey--text ml-4">
                         ({{ Math.floor(Math.random() * 10000) }})
@@ -165,17 +166,6 @@
                         <i class="far fa-user mr-2"></i>
                         <span>{{ anuncio.vendedor }}</span>
                       </v-chip>
-                    </v-row>
-                    <v-row class=" mx-0 my-2 d-flex aling-self-start">
-                      <span class="text-h4"> $ {{ anuncio.precio }}</span>
-                      <span
-                        class="text-subtitle-2  text-decoration-line-through ml-1"
-                        >$
-                        {{
-                          Number(anuncio.precio) +
-                            Math.floor(Math.random() * 11)
-                        }}</span
-                      >
                     </v-row>
                     <v-row class="mx-0 mt-2 text-caption font-weight-light">
                       Estado : {{ anuncio.estado ? "Nuevo" : "Usado" }}
@@ -188,6 +178,17 @@
                         ></i>
                         <span class="ml-1">Envios a El Salvador</span>
                       </div>
+                    </v-row>
+                    <v-row class=" mx-0 my-2 d-flex aling-self-start">
+                      <span class="text-h4"> $ {{ anuncio.precio }}</span>
+                      <span
+                        class="text-subtitle-2  text-decoration-line-through ml-1"
+                        >$
+                        {{
+                          Number(anuncio.precio) +
+                            Math.floor(Math.random() * 11)
+                        }}</span
+                      >
                     </v-row>
                   </v-card-text>
                   <v-card-actions>

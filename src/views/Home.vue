@@ -74,17 +74,20 @@ export default {
                   .then((url) => {
                     contador = contador + 1;
                     anuncioData.imagen = url;
-                    if (contador == cantidadAnuncios) {
-                      this.loadingData = false;
-                    }
                   })
                   .catch((eUrl) => {
                     console.log(eUrl);
                   });
               })
               .catch((eImg) => {
+                contador = contador + 1;
+                anuncioData.imagen =
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png";
                 console.log(eImg);
               });
+            if (contador == cantidadAnuncios) {
+              this.loadingData = false;
+            }
             anuncioData.id = anuncio.id;
             anunciosLocal.push(anuncioData);
           });
