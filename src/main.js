@@ -24,6 +24,7 @@ export const db = app.firestore();
 export const st = app.storage();
 
 Vue.config.productionTip = false;
+Vue.use(require("vue-moment"));
 
 new Vue({
   router,

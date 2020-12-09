@@ -75,6 +75,71 @@
     <v-main>
       <router-view />
     </v-main>
+    <v-footer dark padless>
+      <v-card
+        flat
+        tile
+        class="blue-grey darken-4 white--text text-center"
+        width="100%"
+      >
+        <v-card-text>
+          <v-btn class="mx-4 white--text" icon>
+            <i class="fab fa-facebook fa-2x"></i>
+          </v-btn>
+          <v-btn class="mx-4 white--text" icon>
+            <i class="fab fa-linkedin fa-2x"></i>
+          </v-btn>
+          <v-btn class="mx-4 white--text" icon>
+            <i class="fab fa-twitter fa-2x"></i>
+          </v-btn>
+          <v-btn class="mx-4 white--text" icon>
+            <i class="fab fa-instagram fa-2x"></i>
+          </v-btn>
+        </v-card-text>
+        <v-divider></v-divider>
+        <v-card-text>
+          <i
+            class="fab fa-amazon  mx-5"
+            :class="{ 'fa-3x': $vuetify.breakpoint.smAndDown }"
+          ></i>
+          <i
+            class="fab fa-android  mx-5"
+            :class="{ 'fa-3x': $vuetify.breakpoint.smAndDown }"
+          ></i>
+          <i
+            class="fab fa-apple  mx-5"
+            :class="{ 'fa-3x': $vuetify.breakpoint.smAndDown }"
+          ></i>
+          <i
+            class="fab fa-ebay  mx-5"
+            :class="{ 'fa-3x': $vuetify.breakpoint.smAndDown }"
+          ></i>
+          <i
+            class="fab fa-google  mx-5"
+            :class="{ 'fa-3x': $vuetify.breakpoint.smAndDown }"
+          ></i>
+          <i
+            class="fab fa-js-square  mx-5"
+            :class="{ 'fa-3x': $vuetify.breakpoint.smAndDown }"
+          ></i>
+          <i
+            class="fab fa-node  mx-5"
+            :class="{ 'fa-3x': $vuetify.breakpoint.smAndDown }"
+          ></i>
+          <i
+            class="fab fa-paypal  mx-5"
+            :class="{ 'fa-3x': $vuetify.breakpoint.smAndDown }"
+          ></i>
+        </v-card-text>
+        <v-card-text class="blue darken-4">
+          Desarrollado por <strong>José Daniel Sandoval Mejía</strong>
+        </v-card-text>
+        <v-card-text class="blue darken-4">
+          {{ new Date().getFullYear() }} — <i class="far fa-copyright"></i>
+          <strong>All Right Reserved</strong>
+        </v-card-text>
+      </v-card>
+    </v-footer>
   </v-app>
 </template>
 

@@ -137,17 +137,21 @@
                         </v-row>
                       </template>
                     </v-img>
-
-                    <v-card-title class="headline">
+                  </router-link>
+                  <v-card-title class="headline mb-0">
+                    <router-link
+                      :to="{ name: 'Anuncio', params: { id: anuncio.id } }"
+                      class="text-decoration-none black--text"
+                    >
                       {{
                         $vuetify.breakpoint.mdAndUp
                           ? anuncio.titulo
                           : anuncio.titulo.substring(0, 49).concat("...")
                       }}
-                      {{ anuncio.fecha }}
-                    </v-card-title>
-                  </router-link>
-                  <v-card-text>
+                    </router-link>
+                  </v-card-title>
+
+                  <v-card-subtitle>
                     <v-row align="center" class="mx-0">
                       <v-rating
                         :value="Math.floor(Math.random() * (6 - 1) + 1)"
@@ -155,10 +159,14 @@
                         dense
                         half-increments
                         readonly
-                        size="10"
+                        size="14"
                       ></v-rating>
-                      <div class="grey--text ml-4">
+                      <div class="grey--text mx-3">
                         ({{ Math.floor(Math.random() * 10000) }})
+                      </div>
+                      <div class="grey--text text-overline">
+                        <span class="mr-3">—</span>
+                        <span>{{ antiguedad(anuncio.fecha.seconds) }}</span>
                       </div>
                     </v-row>
                     <v-row align="center" class="mx-0 my-2">
@@ -179,6 +187,8 @@
                         <span class="ml-1">Envios a El Salvador</span>
                       </div>
                     </v-row>
+                  </v-card-subtitle>
+                  <v-card-text>
                     <v-row class=" mx-0 my-2 d-flex aling-self-start">
                       <span class="text-h4"> $ {{ anuncio.precio }}</span>
                       <span
@@ -250,6 +260,9 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
+import moment from "moment";
+moment.locale("es");
+
 export default {
   name: "Anuncios",
   props: {
@@ -287,6 +300,12 @@ export default {
     updateSortBy(item) {
       this.sortBy = item;
     },
+    antiguedad(segundos) {
+      return moment(segundos, "X").fromNow();
+    },
+  },
+  created() {
+    console.log(moment());
   },
 };
 </script>
