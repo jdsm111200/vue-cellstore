@@ -1,11 +1,11 @@
 <template>
   <v-app>
-    <v-app-bar app color="blue" dark>
+    <v-app-bar app color="grey darken-4" dark>
       <v-app-bar-nav-icon
         @click="drawer = true"
         class="d-md-none"
       ></v-app-bar-nav-icon>
-      <div class="d-none d-md-inline ml-5 mr-3">
+      <div class="d-none d-md-inline ml-5 mr-3 ">
         <router-link
           to="/"
           class="text-decoration-none white--text d-flex align-center "
@@ -45,7 +45,7 @@
       </v-btn-toggle>
       <CrearAnuncio class="ml-2" />
     </v-app-bar>
-    <v-navigation-drawer v-model="drawer" absolute temporary dark>
+    <v-navigation-drawer v-model="drawer" fixed temporary dark>
       <div class="mt-7 mb-7">
         <router-link
           to="/"
@@ -72,7 +72,15 @@
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
-    <v-main>
+    <v-main class="grey lighten-5">
+      <v-snackbar v-model="storeSnackbar" top right color="blue" timeout="-1">
+        Articulo Agregado al Carrito
+        <template v-slot:action="{ attrs }">
+          <v-btn color="white" icon v-bind="attrs" @click="setSnackbar">
+            <i class="fas fa-times-circle fa-2x"></i>
+          </v-btn>
+        </template>
+      </v-snackbar>
       <router-view />
     </v-main>
     <v-footer dark padless>
@@ -100,35 +108,35 @@
         <v-card-text>
           <i
             class="fab fa-amazon  mx-5"
-            :class="{ 'fa-3x': $vuetify.breakpoint.smAndDown }"
+            :class="$vuetify.breakpoint.smAndDown ? 'fa-3x' : 'fa-4x'"
           ></i>
           <i
             class="fab fa-android  mx-5"
-            :class="{ 'fa-3x': $vuetify.breakpoint.smAndDown }"
+            :class="$vuetify.breakpoint.smAndDown ? 'fa-3x' : 'fa-4x'"
           ></i>
           <i
             class="fab fa-apple  mx-5"
-            :class="{ 'fa-3x': $vuetify.breakpoint.smAndDown }"
+            :class="$vuetify.breakpoint.smAndDown ? 'fa-3x' : 'fa-4x'"
           ></i>
           <i
             class="fab fa-ebay  mx-5"
-            :class="{ 'fa-3x': $vuetify.breakpoint.smAndDown }"
+            :class="$vuetify.breakpoint.smAndDown ? 'fa-3x' : 'fa-4x'"
           ></i>
           <i
             class="fab fa-google  mx-5"
-            :class="{ 'fa-3x': $vuetify.breakpoint.smAndDown }"
+            :class="$vuetify.breakpoint.smAndDown ? 'fa-3x' : 'fa-4x'"
           ></i>
           <i
             class="fab fa-js-square  mx-5"
-            :class="{ 'fa-3x': $vuetify.breakpoint.smAndDown }"
+            :class="$vuetify.breakpoint.smAndDown ? 'fa-3x' : 'fa-4x'"
           ></i>
           <i
             class="fab fa-node  mx-5"
-            :class="{ 'fa-3x': $vuetify.breakpoint.smAndDown }"
+            :class="$vuetify.breakpoint.smAndDown ? 'fa-3x' : 'fa-4x'"
           ></i>
           <i
             class="fab fa-paypal  mx-5"
-            :class="{ 'fa-3x': $vuetify.breakpoint.smAndDown }"
+            :class="$vuetify.breakpoint.smAndDown ? 'fa-3x' : 'fa-4x'"
           ></i>
         </v-card-text>
         <v-card-text class="blue darken-4">
@@ -156,10 +164,10 @@ export default {
     search: "",
   }),
   methods: {
-    ...mapMutations(["setBusqueda"]),
+    ...mapMutations(["setBusqueda", "setSnackbar"]),
   },
   computed: {
-    ...mapState(["cantidad"]),
+    ...mapState(["cantidad", "storeSnackbar"]),
   },
 };
 </script>

@@ -1,13 +1,14 @@
 <template>
   <div>
     <v-btn
-      color="blue blue darken-4"
+      color="blue darken-4"
       class="d-none d-sm-block"
       @click="dialog = true"
+      rounded
       >Nuevo Anuncio</v-btn
     >
     <v-btn
-      color="blue blue darken-4"
+      color="blue darken-4"
       class="d-sm-none"
       fab
       small
@@ -179,6 +180,7 @@
                               color="#2196F3"
                               clearable
                               :translations="traducciones"
+                              fetch-country
                               @update="obtenerTelefono"
                               valid-color="#9E9E9E"
                               error-color="#F44336"
@@ -190,9 +192,10 @@
                       </v-col>
                     </v-row>
                   </v-container>
-                  <v-btn @click="siguientePaso" color="blue" dark
-                    >Siguiente</v-btn
-                  >
+                  <v-btn @click="siguientePaso" color="blue" dark>
+                    <span class="mr-2">Siguiente </span>
+                    <i class="fas fa-forward"></i>
+                  </v-btn>
                 </v-form>
               </v-stepper-content>
               <v-stepper-content step="2">
@@ -221,6 +224,10 @@
                   <v-row>
                     <v-col cols="12" md="6" class="mx-auto">
                       <v-card v-if="imagenesUrl.length > 0">
+                        <v-card-subtitle>
+                          Cantdad de imagenes actuales
+                          {{ imagenesUrl.length }} / 15
+                        </v-card-subtitle>
                         <v-carousel hide-delimiters show-arrows height="25em">
                           <v-carousel-item
                             v-for="(imagen, i) in imagenesUrl"
@@ -235,23 +242,24 @@
                             ></v-btn>
                           </v-carousel-item>
                         </v-carousel>
-                        <v-card-subtitle>
-                          Cantdad de imagenes actuales
-                          {{ imagenesUrl.length }} / 15
-                        </v-card-subtitle>
                       </v-card>
                     </v-col>
                   </v-row>
                   <v-row>
                     <v-col class="d-flex justify-space-between">
-                      <v-btn @click="e1 = 1" color="blue" dark>Atras</v-btn>
+                      <v-btn @click="e1 = 1" color="blue" dark>
+                        <span class="mr-1">Atras</span>
+                        <i class="fas fa-backward"></i>
+                      </v-btn>
                       <v-btn
                         @click="crearAnuncio"
                         color="green"
                         dark
                         class="=mr-auto"
-                        >Guardar</v-btn
                       >
+                        <span class="mr-1">Publicar</span>
+                        <i class="fas fa-upload"></i>
+                      </v-btn>
                     </v-col>
                   </v-row>
                 </v-container>
@@ -273,11 +281,16 @@
         </v-card-text>
       </v-card>
     </v-dialog>
-    <v-snackbar v-model="snackbar">
+    <v-snackbar v-model="snackbar" top right color="blue" timeout="-1">
       Anuncio Publicado
       <template v-slot:action="{ attrs }">
-        <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">
-          Close
+        <v-btn
+          color="white"
+          icon
+          v-bind="attrs"
+          @click="snackbar = false"
+        >
+          <i class="fas fa-times-circle fa-2x"></i>
         </v-btn>
       </template>
     </v-snackbar>

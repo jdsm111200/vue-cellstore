@@ -15,7 +15,7 @@
         <p class="text-center">Cargando Datos...</p>
       </template>
       <template v-slot:header>
-        <v-toolbar flat>
+        <v-toolbar class="transparent" flat>
           <span class="ml-auto">Items por Pagina:</span>
           <v-menu offset-y>
             <template v-slot:activator="{ on, attrs }">
@@ -208,7 +208,8 @@
                       :block="!$vuetify.breakpoint.mdAndUp"
                       @click="agregarAlCarrito1(anuncio)"
                     >
-                      <i class="fas fa-shopping-cart"></i>Agregar al carrito
+                      <span>Agregar al carrito</span>
+                      <i class="fas fa-cart-plus  fa-2x ml-1"></i>
                     </v-btn>
                   </v-card-actions>
                 </div>
@@ -241,8 +242,9 @@
                   </v-avatar>
                 </router-link>
               </div>
-            </v-card> </v-col
-        ></v-row>
+            </v-card>
+          </v-col>
+        </v-row>
       </template>
       <template v-slot:footer>
         <v-pagination
@@ -252,6 +254,9 @@
           color="blue darken-4"
           circle
           dark
+          @input="$vuetify.goTo(0)"
+          @next="$vuetify.goTo(0)"
+          @previous="$vuetify.goTo(0)"
         ></v-pagination>
       </template>
     </v-data-iterator>
@@ -303,9 +308,6 @@ export default {
     antiguedad(segundos) {
       return moment(segundos, "X").fromNow();
     },
-  },
-  created() {
-    console.log(moment());
   },
 };
 </script>

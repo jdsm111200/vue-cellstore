@@ -48,7 +48,9 @@
         </v-row>
         <v-row>
           <v-col cols="6" class="d-flex flex-column">
-            <v-row><span class="mx-auto font-weight-bold">Cantidad</span></v-row>
+            <v-row
+              ><span class="mx-auto font-weight-bold">Cantidad</span></v-row
+            >
             <v-row>
               <v-btn-toggle class="mx-auto">
                 <v-btn
@@ -74,7 +76,9 @@
             </v-row>
           </v-col>
           <v-col cols="6" class="d-flex flex-column">
-            <v-row><span class="mx-auto font-weight-bold">Subtotal</span></v-row>
+            <v-row
+              ><span class="mx-auto font-weight-bold">Subtotal</span></v-row
+            >
             <v-row class="text-h5">
               <span class="mx-auto">$ {{ articulo.subTotal }} </span>
             </v-row>
@@ -123,7 +127,9 @@
             </v-row>
             <v-row>
               <v-col cols="6" class="d-flex flex-column">
-                <v-row><span class="mx-auto font-weight-bold">Cantidad</span></v-row>
+                <v-row
+                  ><span class="mx-auto font-weight-bold">Cantidad</span></v-row
+                >
                 <v-row>
                   <v-btn-toggle class="mx-auto">
                     <v-btn
@@ -137,6 +143,7 @@
                             ? 'fas fa-minus'
                             : 'fas fa-trash-alt fa-2x'
                         "
+                        :style="{'color:white':articulo.cantidad==1}"
                       ></i>
                     </v-btn>
                     <v-avatar tile style=" border: 1px solid #E0E0E0;">{{
@@ -149,7 +156,9 @@
                 </v-row>
               </v-col>
               <v-col cols="6" class="d-flex flex-column">
-                <v-row><span class="mx-auto font-weight-bold">Subtotal</span></v-row>
+                <v-row>
+                  <span class="mx-auto font-weight-bold">Subtotal</span>
+                </v-row>
                 <v-row class="text-h5">
                   <span class="mx-auto">$ {{ articulo.subTotal }} </span>
                 </v-row>
@@ -235,11 +244,54 @@
           </v-col>
         </v-row>
       </v-card>
-      <v-row>
-        <v-col class="text-right text-h4"
-          >Total a Pagar: $ {{ totalAPagar }}</v-col
-        >
-      </v-row>
+      <v-card v-if="carrito.length == 0">
+        <v-row class="mx-0 mb-1">
+          <v-col cols="4" md="3" class=" mx-auto text-center">
+            <v-img
+              src="https://drive.google.com/uc?export=download&id=1LQjwcowcoKkB8lUGvDty_aDJZWI2axkO"
+            ></v-img>
+          </v-col>
+        </v-row>
+        <v-row class="mx-0">
+          <v-col cols="12" class="text-center text-h5">
+            Parece que tu carrito esta vacio
+          </v-col>
+        </v-row>
+        <v-card-actions class="justify-center">
+          <v-btn color="blue darken-4" dark to="/">
+            <span>Continuar Comprando</span>
+            <i class="fas fa-shopping-cart fa-2x ml-1"></i>
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+      <v-card v-if="carrito.length > 0">
+        <v-row class="mx-0">
+          <v-col
+            cols="12"
+            sm="6"
+            class="text-h6 text-uppercase"
+            :class="{ 'text-center': $vuetify.breakpoint.xsOnly }"
+          >
+            Total a Pagar: $ {{ totalAPagar }}
+          </v-col>
+          <v-col cols="12" sm="6" class="text-center">
+            <v-btn
+              to="/"
+              color="blue darken-4"
+              :class="$vuetify.breakpoint.xsOnly ? 'mb-2' : 'mr-5'"
+              dark
+              :block="$vuetify.breakpoint.xsOnly"
+            >
+              <span>Continuar Comprando</span>
+              <i class="fas fa-shopping-cart fa-2x ml-1"></i>
+            </v-btn>
+            <v-btn color="deep-orange" dark :block="$vuetify.breakpoint.xsOnly">
+              Finalizar la compra
+              <i class="fas fa-money-check-alt fa-2x ml-1"></i>
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-card>
     </v-container>
   </div>
 </template>

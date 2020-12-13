@@ -6,7 +6,18 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    marcas: ["Samsung", "Xiaomi", "Apple", "Nokia", "Huawei", "Otro"],
+    marcas: [
+      "Samsung",
+      "Xiaomi",
+      "Apple",
+      "Nokia",
+      "Huawei",
+      "Google",
+      "LG",
+      "Motorola",
+      "Oppo",
+      "Otro",
+    ],
     sistemaOP: [
       { tipo: "Android", version: [4, 5, 6, 7, 8, 9, 10, 11] },
       { tipo: "IOS", version: [3, 4, 5, 6, 7, 8, 10, 12, 13, 14] },
@@ -17,7 +28,6 @@ export default new Vuex.Store({
     nuevo: false,
     carrito: [],
     cantidad: 0,
-    path: null,
     storeEstado: [],
     storeMarca: [],
     storeSistema: [],
@@ -25,6 +35,7 @@ export default new Vuex.Store({
     storeRom: [],
     storePrecioMin: null,
     storePrecioMax: null,
+    storeSnackbar: false,
   },
   mutations: {
     nuevoAnuncio(state) {
@@ -36,6 +47,9 @@ export default new Vuex.Store({
       if (busqueda.path != "/") {
         router.push("/");
       }
+    },
+    setSnackbar(state) {
+      state.storeSnackbar = false;
     },
     setFiltros(state, filtro) {
       state.storeEstado = filtro.estado;
@@ -70,6 +84,7 @@ export default new Vuex.Store({
         ).toFixed(2);
         state.carrito.push(anuncio);
       }
+      state.storeSnackbar = true;
       this.commit("cantidadDeArticulos");
       console.log(state.carrito);
     },

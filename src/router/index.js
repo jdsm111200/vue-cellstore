@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Anuncio from "../views/Anuncio.vue";
 import Carrito from "../views/Carrito.vue";
 import Estadisticas from "../views/Estadisticas.vue";
+import Error404 from "../views/Error404.vue";
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes = [
     path: "/estadisticas",
     name: "Estadisticas",
     component: Estadisticas,
+  },
+  {
+    path: "*",
+    name: "Error404",
+    component: Error404,
   },
 ];
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-expansion-panels >
+    <v-expansion-panels>
       <v-expansion-panel>
         <v-expansion-panel-header
           :expand-icon="iconoEstado"
@@ -12,40 +12,44 @@
           <v-checkbox
             v-model="selectedEstado"
             :value="true"
-            color="blue"
+            color="blue darken-4"
             dense
             hide-details
             @click="filtro"
           >
             <template v-slot:label>
               Nuevo
-              <v-btn
+              <v-chip
                 class=" ml-1"
-                x-small
-                disabled
-                rounded
+                color="blue"
+                small
+                dark
+                pill
+                :ripple="false"
                 :loading="loadingCantidad"
-                >{{ cantidadNuevo }}</v-btn
+                >{{ cantidadNuevo }}</v-chip
               >
             </template>
           </v-checkbox>
           <v-checkbox
             v-model="selectedEstado"
             :value="false"
-            color="blue"
+            color="blue darken-4"
             dense
             hide-details
             @click="filtro"
           >
             <template v-slot:label>
               Usado
-              <v-btn
+              <v-chip
                 class=" ml-1"
-                x-small
-                disabled
-                rounded
+                color="blue"
+                small
+                dark
+                pill
+                :ripple="false"
                 :loading="loadingCantidad"
-                >{{ cantidadUsado }}</v-btn
+                >{{ cantidadUsado }}</v-chip
               >
             </template>
           </v-checkbox>
@@ -64,20 +68,22 @@
             :key="index + 'A'"
             v-model="selectedMarcas"
             :value="item"
-            color="blue"
+            color="blue darken-4"
             dense
             hide-details
             @click="filtro"
           >
             <template v-slot:label>
               {{ item }}
-              <v-btn
+              <v-chip
                 class=" ml-1"
-                x-small
-                disabled
-                rounded
+                color="blue"
+                small
+                dark
+                pill
+                :ripple="false"
                 :loading="loadingCantidad"
-                >{{ cantidadMarca[index] }}</v-btn
+                >{{ cantidadMarca[index] }}</v-chip
               >
             </template>
           </v-checkbox>
@@ -94,6 +100,7 @@
           <v-checkbox
             v-for="(item, index) in sistemaOP"
             :key="index + 'B'"
+            color="blue darken-4"
             v-model="selectedOP"
             :value="item.tipo"
             dense
@@ -102,13 +109,15 @@
           >
             <template v-slot:label>
               {{ item.tipo }}
-              <v-btn
+             <v-chip
                 class=" ml-1"
-                x-small
-                disabled
-                rounded
+                color="blue"
+                small
+                dark
+                pill
+                :ripple="false"
                 :loading="loadingCantidad"
-                >{{ cantidadOP[index] }}</v-btn
+                >{{ cantidadOP[index] }}</v-chip
               >
             </template>
           </v-checkbox>
@@ -125,6 +134,7 @@
           <v-checkbox
             v-for="(item, index) in rom"
             :key="index + 'D'"
+            color="blue darken-4"
             v-model="selectedRom"
             :label="item + ' GB'"
             :value="item"
@@ -134,13 +144,15 @@
           >
             <template v-slot:label>
               {{ item }} GB
-              <v-btn
+             <v-chip
                 class=" ml-1"
-                x-small
-                disabled
-                rounded
+                color="blue"
+                small
+                dark
+                pill
+                :ripple="false"
                 :loading="loadingCantidad"
-                >{{ cantidadRom[index] }}</v-btn
+                >{{ cantidadRom[index] }}</v-chip
               >
             </template>
           </v-checkbox>
@@ -157,6 +169,7 @@
           <v-checkbox
             v-for="(item, index) in ram"
             :key="index + 'C'"
+            color="blue darken-4"
             v-model="selectedRam"
             :label="item + ' GB'"
             :value="item"
@@ -166,13 +179,15 @@
           >
             <template v-slot:label>
               {{ item }} GB
-              <v-btn
+             <v-chip
                 class=" ml-1"
-                x-small
-                disabled
-                rounded
+                color="blue"
+                small
+                dark
+                pill
+                :ripple="false"
                 :loading="loadingCantidad"
-                >{{ cantidadRam[index] }}</v-btn
+                >{{ cantidadRam[index] }}</v-chip
               >
             </template>
           </v-checkbox>

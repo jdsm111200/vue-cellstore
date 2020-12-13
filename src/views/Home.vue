@@ -13,17 +13,27 @@
             color="blue"
             @click="dialog = true"
             v-if="!$vuetify.breakpoint.mdAndUp"
+            elevation="24"
             dark
             fixed
             bottom
-            small
             right
             fab
           >
             <i class="fas fa-filter"></i>
           </v-btn>
           <v-dialog v-model="dialog" v-if="!$vuetify.breakpoint.mdAndUp">
-            <Filtro></Filtro>
+            <v-card>
+              <v-card-title class="justify-space-between">
+                <span>Filtros </span>
+                <v-btn @click="dialog = false" icon>
+                  <i class="fas fa-times fa-2x"></i>
+                </v-btn>
+              </v-card-title>
+              <v-card-text>
+                <Filtro></Filtro>
+              </v-card-text>
+            </v-card>
           </v-dialog>
           <Anuncios :anuncios="filtro" :loadingData="loadingData"> </Anuncios
         ></v-col>
@@ -97,7 +107,6 @@ export default {
         });
       //this.anuncios = anunciosLocal;
       this.anuncios = anunciosLocal;
-      console.log(this.anuncios);
     },
   },
   created() {
@@ -215,8 +224,6 @@ export default {
         } else {
           condicion.precio = "true";
         }
-        console.log(this.storePrecioMin);
-        console.log("algo");
         condicion.estado = condicion.estado.substring(
           0,
           condicion.estado.length - 2
@@ -243,14 +250,12 @@ export default {
         });
         return arrayFiltrado;
       } else {
-        console.log("no hay filtro seleccionado");
         return this.anuncios;
       }
     },
   },
   watch: {
     nuevo: function(val) {
-      console.log(val);
       this.loadingData = true;
       this.obtenerAnuncios();
     },
